@@ -43,7 +43,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           npm run build:win 
-          ls -lhrt
+          tree /F
 
       - name: release
         uses: softprops/action-gh-release@v1
