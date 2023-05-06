@@ -23,10 +23,10 @@ jobs:
           cache: 'npm'
           run: |
             npm ci
-            npm run build:win --if-present
+            npm run build:win
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: 'dist/**'
+          artifacts: 'dist'
           body: 'Release ${{ github.ref }}'
           generateReleaseNotes: 'true'
