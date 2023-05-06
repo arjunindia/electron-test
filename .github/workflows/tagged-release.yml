@@ -33,7 +33,9 @@ jobs:
 
       - name: build-linux
         if: matrix.os == 'ubuntu-latest'
-        run: npm run build:linux
+        run: |
+          npm run build:linux
+          ls -lhrt
 
       - name: build-mac
         if: matrix.os == 'macos-latest'
@@ -42,13 +44,16 @@ jobs:
       - name: build-win
         if: matrix.os == 'windows-latest'
         run: |
-          npm run build:win 
-          tree /F
+          npm run build:win
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
 
       - name: release
         uses: softprops/action-gh-release@v1
         with:
-          draft: true
+          draft: false
           files: |
             ./dist/*.exe
             ./dist/*.zip
