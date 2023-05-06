@@ -13,6 +13,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+      deployments: write
+
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
