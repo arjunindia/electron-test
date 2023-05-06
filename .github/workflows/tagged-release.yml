@@ -21,9 +21,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          run: |
-            npm ci
-            npm run build:win
+          run: npm ci
+      - name: Build
+        run: npm run build:win
 
       - uses: ncipollo/release-action@v1
         with:
